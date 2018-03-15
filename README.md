@@ -8,3 +8,4 @@ Methods are matched just based on their names and not on their classes, so ther 
 
 Usage:
 `python3 api_usage_checker /path/to/plugin`
+`python3 api_usage_checker /path/to/plugin/file.py`
