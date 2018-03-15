@@ -1,7 +1,7 @@
 import os
 import sys
 
-from matchesdict import matches
+from matches.matchesdict import matches
 
 
 def line_matches_dict(line):

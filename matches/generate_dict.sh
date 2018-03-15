@@ -1,38 +1,33 @@
 #!/bin/bash
-fin="$1"
+fin="qgis_api_break.dox"
 
 dict_file=matchesdict.py
 
+
 echo 'matches = {' >${dict_file}
 
-# moved classes
+echo 'moved classes'
 cat "$fin" | sed -n '/^Moved Classes/,/<\/table/p'  | grep '^<tr><td>' | \
     sed 's/^<tr><td>\([^<]*\)<td>\([^<]*\)<td>\(.*\)/    "\2.\1": "\3.\1",/g' >> ${dict_file}
 
-echo "ZIZIZI1"
-
-# renamed classes
+echo "renamed classes"
 cat "$fin" | sed -n '/^Renamed Classes/,/<\/table/p'  | grep '^<tr><td>' | \
     sed 's/^<tr><td>\([^<]*\)<td>\(.*\)/    "\1": "\2",/g' >> ${dict_file}
 
-echo "ZIZIZI2"
 
-# renamed enums
+echo "renamed enums"
 cat "$fin" | sed -n '/^<caption id="renamed_enum_values">Renamed enum values/,/<\/table>/p' | grep '^<tr><td>' | \
     sed 's/^<tr><td>\([^<]*\)<td>\([^<]*\)<td>\(.*\)/    "\2": "\3",/g' >> ${dict_file}
 
 
-echo "ZIZIZI3"
-# renamed method  names
+echo "renamed method  names"
 cat "$fin" | sed -n '/^<caption id="renamed_methods">Renamed method names/,/<\/table>/p' | grep '^<tr><td>' | \
     sed 's/^<tr><td>\([^<]*\)<td>\([^<]*\)<td>\(.*\)/    "\2": "\3",/g' >> ${dict_file}
 
-echo "ZIZIZI4"
 cat "$fin" | sed -n '/^Removed Classes /,/^General changes/p' | grep '^-' | sed 's/^- //g;s/[\. ].*//g' | \
     sed 's/\(.*\)/    "\1": "=== Removed ===",/g' >> ${dict_file}
 
-echo "ZIZIZI5"
-
+echo "free text changes"
 cat "$fin" | sed -n '/^General changes /,/^QGIS 2.6/p' | grep '^- `\?[a-zA-Z0-9_]\+()`\?' | \
     sed 's/- `\?\([a-zA-Z0-9_]\+\)()`\? \?\(.*\)/    "\1": "\2",/g' >> ${dict_file}
 
