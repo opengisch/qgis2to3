@@ -4,7 +4,7 @@ it is based on a machine parsing of https://qgis.org/api/api_break.html so the r
 Also being a simple parser, it just give an hint were to look at. It is by no means a complete tool to find all the 
 possible API incompatiblity.
 
-Methods are matched just based on their names and not on their classes, so ther migth be various false positives.
+Methods are matched just based on their names and not on their classes, so there might be various false positives.
 
 Usage:
 `python3 api_usage_checker /path/to/plugin`
