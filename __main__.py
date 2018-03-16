@@ -9,11 +9,7 @@ from matches.matchesdict import matches
 
 TOTAL = 0
 RESULTS = {}
-
 REGXPS = {}
-for k in matches.keys():
-    p = re.compile('.*\.?{}\\b'.format(k))
-    REGXPS[k] = p
 
 
 def line_matches_dict(line):
@@ -39,11 +35,18 @@ def check_file(file_path):
                 print("{}::{}: Found {} -> {}".format(file_path, linenumber+1, match, message))
 
     RESULTS[file_path] = match_counter
-    TOTAL  += match_counter
+    TOTAL += match_counter
+
+
+def create_rgxps():
+    for k in matches.keys():
+        p = re.compile('.*\\b\.?{}\\b'.format(k))
+        REGXPS[k] = p
 
 
 def usage():
-    print('Usages: \npython3 qgis_api2_usage_checker /path/to/plugin\npython3 qgis_api2_usage_checker /path/to/plugin/file.py')
+    print('Usages: \npython3 qgis_api2_usage_checker /path/to/plugin\n'
+          'python3 qgis_api2_usage_checker /path/to/plugin/file.py')
 
 
 if __name__ == "__main__":
@@ -51,8 +54,10 @@ if __name__ == "__main__":
         rootdir = filename = sys.argv[1]
 
         if os.path.isfile(rootdir):
+            create_rgxps()
             check_file(rootdir)
         elif os.path.isdir(rootdir):
+            create_rgxps()
             for subdir, dirs, files in os.walk(rootdir):
                 for file in files:
                     if file.endswith('.py'):
