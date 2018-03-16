@@ -2,6 +2,7 @@
 
 import os
 import sys
+import re
 
 from matches.matchesdict import matches
 
@@ -9,10 +10,19 @@ from matches.matchesdict import matches
 TOTAL = 0
 RESULTS = {}
 
+REGXPS = {}
+for k in matches.keys():
+    p = re.compile('.*\.?{}\\b'.format(k))
+    REGXPS[k] = p
+
 
 def line_matches_dict(line):
+    global REGXPS
     for k, v in matches.items():
-        if k in line:
+        if line.strip().startswith('#'):
+            continue
+        p = REGXPS[k]
+        if p.match(line):
             return k, v
     return False, None
 
@@ -53,8 +63,8 @@ if __name__ == "__main__":
             exit(0)
         print('\n')
         print('*' * 79)
-        print('Found {} API 2 usages\n'.format(TOTAL))
-        print('Files with API 2 usages:')
+        print('Found {} API2 usages\n'.format(TOTAL))
+        print('Files with API2 usages:')
         for f, c in RESULTS.items():
             print('{} -> {} usages found'.format(f, c))
     else:
