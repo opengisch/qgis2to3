@@ -7,5 +7,5 @@ possible API incompatiblity.
 Methods are matched just based on their names and not on their classes, so there might be various false positives.
 
 Usage:
-`python3 api_usage_checker /path/to/plugin`
-`python3 api_usage_checker /path/to/plugin/file.py`
+`python3 qgis_api2_usage_checker /path/to/plugin`
+`python3 qgis_api2_usage_checker /path/to/plugin/file.py`

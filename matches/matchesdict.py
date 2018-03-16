@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 matches = {
     "gui.QgsMapLayerModel": "core.QgsMapLayerModel",
     "gui.QgsMapLayerProxyModel": "core.QgsMapLayerProxyModel",

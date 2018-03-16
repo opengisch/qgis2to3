@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 
@@ -31,7 +33,7 @@ def check_file(file_path):
 
 
 def usage():
-    print('Usages: \npython3 api_usage_checker /path/to/plugin\npython3 api_usage_checker /path/to/plugin/file.py')
+    print('Usages: \npython3 qgis_api2_usage_checker /path/to/plugin\npython3 qgis_api2_usage_checker /path/to/plugin/file.py')
 
 
 if __name__ == "__main__":

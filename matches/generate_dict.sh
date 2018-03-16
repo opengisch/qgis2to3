@@ -4,7 +4,8 @@ fin="qgis_api_break.dox"
 dict_file=matchesdict.py
 
 
-echo 'matches = {' >${dict_file}
+echo '# -*- coding: utf-8 -*-' >${dict_file}
+echo 'matches = {' >>${dict_file}
 
 echo 'moved classes'
 cat "$fin" | sed -n '/^Moved Classes/,/<\/table/p'  | grep '^<tr><td>' | \
