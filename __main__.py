@@ -22,7 +22,6 @@ def check_file(file_path):
 
     match_counter = 0
     with open(file_path) as fp:
-        print(file_path)
         for linenumber, line in enumerate(fp):
             match, message = line_matches_dict(line)
             if match:
