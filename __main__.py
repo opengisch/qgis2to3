@@ -22,6 +22,7 @@ def check_file(file_path):
 
     match_counter = 0
     with open(file_path) as fp:
+        print(file_path)
         for linenumber, line in enumerate(fp):
             match, message = line_matches_dict(line)
             if match:
@@ -45,7 +46,7 @@ if __name__ == "__main__":
         elif os.path.isdir(rootdir):
             for subdir, dirs, files in os.walk(rootdir):
                 for file in files:
-                    if '.py' in file:
+                    if file.endswith('.py'):
                         file_path = os.path.join(subdir, file)
                         check_file(file_path)
         else:
