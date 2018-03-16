@@ -26,7 +26,7 @@ def check_file(file_path):
             match, message = line_matches_dict(line)
             if match:
                 match_counter += 1
-                print("{}::{}: Found {} -> {}".format(file_path, linenumber, match, message))
+                print("{}::{}: Found {} -> {}".format(file_path, linenumber+1, match, message))
 
     RESULTS[file_path] = match_counter
     TOTAL  += match_counter
