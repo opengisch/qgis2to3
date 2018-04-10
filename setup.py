@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    version=[VERSION],
+    version='[VERSION]',
     name='qgis2to3',
     packages=find_packages(exclude=['tests*']),
     scripts=[
