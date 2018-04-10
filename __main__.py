@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import argparse
 import os
 import sys
 import re
@@ -35,7 +36,7 @@ def check_file(file_path):
             match, message = line_matches_dict(line)
             if match:
                 match_counter += 1
-                if not summary:
+                if not summarize:
                     print("{}::{}: Found {} -> {}".format(
                         file_path, linenumber + 1, match, message))
 
@@ -67,37 +68,58 @@ def print_note():
             print(line.rstrip())
 
 
-if __name__ == "__main__":
-    if len(sys.argv) > 1:
-        rootdir = filename = sys.argv[1]
-
-        # catch options
-        # --summary
-        summary = True
-        # --include-all
-        include_verbose_keys = True
-
-        if os.path.isfile(rootdir):
-            create_rgxps()
-            check_file(rootdir)
-        elif os.path.isdir(rootdir):
-            create_rgxps()
-            for subdir, dirs, files in os.walk(rootdir):
-                for file in files:
-                    if file.endswith('.py'):
-                        file_path = os.path.join(subdir, file)
-                        check_file(file_path)
-        else:
-            usage()
-
-        print('\n')
-        print('*' * 79)
-        print('Found {} API2 usages\n'.format(TOTAL))
-        print('Files with API2 usages:')
-        for f, c in RESULTS.items():
-            print('{} -> {} usages found'.format(f, c))
-
-        print_note()
-
+def is_path_valid(arg):
+    if not os.path.exists(arg):
+        parser.error("The path %s does not exist!" % arg)
     else:
-        usage()
+        return arg
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description='Find usages of the QGIS api version 2 and propose '
+                    'changes for api version 3')
+
+    # parser arguments
+    parser.add_argument(
+        '-s', '--summarize',
+        action="store_true",
+        help='Show only the summaries for each analysed file')
+    parser.add_argument(
+        '-a', '--all',
+        action="store_true",
+        help='Include very frequent words like {} in the '
+        'analysis'.format(VERBOSE_KEYS))
+    parser.add_argument(
+        'path',
+        type=lambda arg: is_path_valid(arg),
+        help='File or directory to be analysed')
+
+    # enforce arguments check
+    args = parser.parse_args()
+    rootdir = filename = sys.argv[1]
+
+    # catch options
+    # --summary
+    summarize = args.summarize
+    # --all
+    include_verbose_keys = args.all
+
+    create_rgxps()
+    if os.path.isfile(rootdir):
+        check_file(rootdir)
+    else:
+        for subdir, dirs, files in os.walk(rootdir):
+            for file in files:
+                if file.endswith('.py'):
+                    file_path = os.path.join(subdir, file)
+                    check_file(file_path)
+
+    print('\n')
+    print('*' * 79)
+    print('Found {} API2 usages\n'.format(TOTAL))
+    print('Files with API2 usages:')
+    for f, c in RESULTS.items():
+        print('{} -> {} usages found'.format(f, c))
+
+    print_note()
