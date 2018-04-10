@@ -1,5 +1,5 @@
 #!/bin/bash
-fin="qgis_api_break.dox"
+fin="data/qgis_api_break.dox"
 
 dict_file=matchesdict.py
 

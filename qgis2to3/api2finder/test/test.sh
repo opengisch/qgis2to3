@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-python3 __main__.py test_file.py
+python3 ../qgis2apifinder -n test_file.py
 
 
 echo "*************************************"

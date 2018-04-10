@@ -1,4 +1,10 @@
-This tool finds usages of the QGIS api version 2 and proposes changes for api version 3
+The 2to3 package is a copy of the files found in https://github
+.com/qgis/QGIS/tree/master/scripts to allow for quick downloading
+
+
+
+The api2finder package is a tool finds usages of the QGIS api version 2 and 
+proposes changes for api version 3
 
 it is based on a machine parsing of https://qgis.org/api/api_break.html so the result are as good as the information there.
 Also, being a simple parser, it just give an hint were to look at. It is by no means a complete tool to find all the

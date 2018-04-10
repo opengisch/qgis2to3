@@ -1,16 +1,29 @@
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
+#  -*- coding: utf-8 -*-
 
 import argparse
 import os
-import sys
 import re
 
-from matches.matchesdict import matches
+from qgis2to3.api2finder.matchesdict import matches
 
+# user configurable if wanted
+VERBOSE_KEYS = ['layout', 'layer', 'fields']
+
+# do not change
 TOTAL = 0
 RESULTS = {}
 REGXPS = {}
-VERBOSE_KEYS = ['layout', 'layer', 'fields']
+NOTE = """NOTE:
+This tool is based on a machine parsing of 
+https://qgis.org/api/api_break.html so the result are as good as the 
+information there. Also, being a simple parser, it just give an hint were to
+look at. It is by no means a complete tool to find all the
+possible API incompatibility.
+
+Methods are matched just based on their names and not on their classes, 
+so there might be various false positives.
+"""
 
 
 def line_matches_dict(line):
@@ -52,17 +65,11 @@ def create_rgxps():
 
 
 def print_note():
+    if hide_note:
+        return
     print('\n')
     print('#' * 79)
-    print('NOTE:')
-    readme = os.path.dirname(os.path.realpath(__file__))
-    readme = os.path.join(readme, 'README.md')
-    with open(readme, 'r') as f:
-        for line in f:
-            if '# Usage' in line:
-                print('#' * 79)
-                break
-            print(line.rstrip())
+    print(NOTE)
 
 
 def is_path_valid(arg):
@@ -97,25 +104,28 @@ if __name__ == "__main__":
         help='Include very frequent words like {} in the '
         'analysis'.format(VERBOSE_KEYS))
     parser.add_argument(
+        '-n', '--nonote',
+        action="store_true",
+        help='Do not show the note about false positives')
+    parser.add_argument(
         'path',
         type=lambda arg: is_path_valid(arg),
         help='File or directory to be analysed')
 
     # enforce arguments check
     args = parser.parse_args()
-    rootdir = filename = sys.argv[1]
+    path = args.path
 
     # catch options
-    # --summary
     summarize = args.summarize
-    # --all
     include_verbose_keys = args.all
+    hide_note = args.nonote
 
     create_rgxps()
-    if os.path.isfile(rootdir):
-        check_file(rootdir)
+    if os.path.isfile(path):
+        check_file(path)
     else:
-        for subdir, dirs, files in os.walk(rootdir):
+        for subdir, dirs, files in os.walk(path):
             for file in files:
                 if file.endswith('.py'):
                     file_path = os.path.join(subdir, file)
