@@ -54,7 +54,9 @@ def print_note():
     print('\n')
     print('#' * 79)
     print('NOTE:')
-    with open('README.md', 'r') as f:
+    readme = os.path.dirname(os.path.realpath(__file__))
+    readme = os.path.join(readme, 'README.md')
+    with open(readme, 'r') as f:
         for line in f:
             if '# Usage' in line:
                 print('#' * 79)
