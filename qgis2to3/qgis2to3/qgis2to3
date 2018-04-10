@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-import sys
+import sys, os
 import qgis2to3.qgis2to3
 
 from lib2to3.main import main
 
-# sys.path.append('/usr/local/lib/python3.6/dist-packages/qgis2to3/qgis2to3/')
+sys.path.append(os.path.abspath(os.path.dirname(qgis2to3.qgis2to3.__file__)))
 
 sys.exit(main('qgis_fixes'))
