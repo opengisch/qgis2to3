@@ -3,8 +3,13 @@ language: python
 python:
   - 3.6
 
-if: tag IS present
+# install: pip install -r requirements.txt
 
-install: pip install -r requirements.txt
+# script:
+#  - nosetests -v
 
-after_success: .deploy/deploy_to_pypi.sh
+deploy:
+  provider: script
+  script: ./.deploy/deploy_to_pypi.sh
+  on:
+    tags: true
