@@ -40,7 +40,8 @@ def check_file(file_path):
                     print("{}::{}: Found {} -> {}".format(
                         file_path, linenumber + 1, match, message))
 
-    RESULTS[file_path] = match_counter
+    if match_counter > 0:
+        RESULTS[file_path] = match_counter
     TOTAL += match_counter
 
 
