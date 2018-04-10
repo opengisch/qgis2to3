@@ -1,3 +1,7 @@
+[![Build status](https://travis-ci.org/opengisch/qgis2to3.svg?master)](https://travis-ci.org/opengisch/qgis2to3)
+[![Release](https://img.shields.io/github/release/opengisch/qgis2to3.svg)](https://github.com/opengisch/qgis2to3/releases)
+
+
 The 2to3 package is a copy of the files found in https://github
 .com/qgis/QGIS/tree/master/scripts to allow for quick downloading
 
