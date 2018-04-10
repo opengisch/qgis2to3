@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    version='0.3',
+    version=[VERSION],
     name='qgis2to3',
     packages=find_packages(exclude=['tests*']),
     scripts=[
@@ -9,7 +9,7 @@ setup(
         'qgis2to3/qgis2to3/qgis2to3'
         ],
     url='https://github.com/opengisch/qgis2to3',
-    # download_url='https://github.com/opengisch/qgis2to3/archive/0.1.tar.gz',
+    download_url='https://github.com/opengisch/qgis2to3/archive/[VERSION].tar.gz',
     license='GPLv3',
     author='Marco Bernasocchi',
     author_email='marco@opengis.ch',
