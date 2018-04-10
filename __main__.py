@@ -50,12 +50,6 @@ def create_rgxps():
         REGXPS[k] = p
 
 
-def usage():
-    print('Usages: \npython3 qgis_api2_usage_checker /path/to/plugin\n'
-          'python3 qgis_api2_usage_checker /path/to/plugin/file.py')
-    exit(0)
-
-
 def print_note():
     print('\n')
     print('#' * 79)
