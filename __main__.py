@@ -72,6 +72,15 @@ def is_path_valid(arg):
         return arg
 
 
+def print_results():
+    print('\n')
+    print('*' * 79)
+    print('Found {} API2 usages\n'.format(TOTAL))
+    print('Files with API2 usages:')
+    for f, c in RESULTS.items():
+        print('{} -> {} usages found'.format(f, c))
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description='Find usages of the QGIS api version 2 and propose '
@@ -112,11 +121,5 @@ if __name__ == "__main__":
                     file_path = os.path.join(subdir, file)
                     check_file(file_path)
 
-    print('\n')
-    print('*' * 79)
-    print('Found {} API2 usages\n'.format(TOTAL))
-    print('Files with API2 usages:')
-    for f, c in RESULTS.items():
-        print('{} -> {} usages found'.format(f, c))
-
+    print_results()
     print_note()
