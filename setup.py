@@ -6,7 +6,7 @@ setup(
     packages=find_packages(exclude=['tests*']),
     scripts=[
         'qgis2to3/api2finder/qgis2apifinder',
-        'qgis2to3/2to3/qgis2to3'
+        'qgis2to3/qgis2to3/qgis2to3'
         ],
     url='https://github.com/opengisch/qgis2to3',
     # download_url='https://github.com/opengisch/qgis2to3/archive/0.1.tar.gz',
@@ -16,7 +16,7 @@ setup(
     description='Tools to help porting QGIS Plugins from api v2 to api v3',
     keywords=[
         'qgis',
-        '2to3',
+        'qgis2to3',
         'porting'
         ],
     classifiers=[
