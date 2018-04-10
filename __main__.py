@@ -6,16 +6,19 @@ import re
 
 from matches.matchesdict import matches
 
-
 TOTAL = 0
 RESULTS = {}
 REGXPS = {}
+VERBOSE_KEYS = ['layout', 'layer', 'fields']
 
 
 def line_matches_dict(line):
     global REGXPS
+    if line.strip().startswith('#'):
+        return False, None
+
     for k, v in matches.items():
-        if line.strip().startswith('#'):
+        if not include_verbose_keys and k in VERBOSE_KEYS:
             continue
         p = REGXPS[k]
         if p.match(line):
@@ -32,7 +35,9 @@ def check_file(file_path):
             match, message = line_matches_dict(line)
             if match:
                 match_counter += 1
-                print("{}::{}: Found {} -> {}".format(file_path, linenumber+1, match, message))
+                if not summary:
+                    print("{}::{}: Found {} -> {}".format(
+                        file_path, linenumber + 1, match, message))
 
     RESULTS[file_path] = match_counter
     TOTAL += match_counter
@@ -47,11 +52,30 @@ def create_rgxps():
 def usage():
     print('Usages: \npython3 qgis_api2_usage_checker /path/to/plugin\n'
           'python3 qgis_api2_usage_checker /path/to/plugin/file.py')
+    exit(0)
+
+
+def print_note():
+    print('\n')
+    print('#' * 79)
+    print('NOTE:')
+    with open('README.md', 'r') as f:
+        for line in f:
+            if '# Usage' in line:
+                print('#' * 79)
+                break
+            print(line.rstrip())
 
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         rootdir = filename = sys.argv[1]
+
+        # catch options
+        # --summary
+        summary = True
+        # --include-all
+        include_verbose_keys = True
 
         if os.path.isfile(rootdir):
             create_rgxps()
@@ -65,12 +89,15 @@ if __name__ == "__main__":
                         check_file(file_path)
         else:
             usage()
-            exit(0)
+
         print('\n')
         print('*' * 79)
         print('Found {} API2 usages\n'.format(TOTAL))
         print('Files with API2 usages:')
         for f, c in RESULTS.items():
             print('{} -> {} usages found'.format(f, c))
+
+        print_note()
+
     else:
         usage()
