@@ -1,7 +1,8 @@
------------------------------------------------------------
 Copyright (C) 2018 OPENGIS.ch
+
 -----------------------------------------------------------
 Author: Marco Bernasocchi <marco@opengis.ch>
+
 Credits: Matteo Nastasi <nastasi@openquake.org>
 
 This program is free software: you can redistribute it and/or modify
