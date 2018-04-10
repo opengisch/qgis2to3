@@ -1,6 +1,7 @@
-Copyright (C) 2018 OPENGIS.ch
 
 -----------------------------------------------------------
+Copyright (C) 2018 OPENGIS.ch
+
 Author: Marco Bernasocchi <marco@opengis.ch>
 
 Credits: Matteo Nastasi <nastasi@openquake.org>
