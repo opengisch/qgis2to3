@@ -26,7 +26,10 @@ no means a complete tool to find all the
 possible API incompatibility.
 
 Methods are matched just based on their names and not on their classes, so 
-there might be various false positives.
+there might be various false positives. Also, the same keyword might have 
+been edited in various classes, api2finder will show you all the suggestion 
+for that keyword.
+
 
 ## install
 `pip install qgis2to3`
