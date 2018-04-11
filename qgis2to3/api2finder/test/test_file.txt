@@ -1,4 +1,5 @@
 # SHOULD MATCH
+QgsAttributeAction
 QgsZonalStatistics
 QgsZonalStatistics()
 QgsZonalStatistics(param)
