@@ -156,3 +156,4 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/inspectionProfiles/
+test_result.txt
