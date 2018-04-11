@@ -6,7 +6,7 @@ setup(
     packages=find_packages(exclude=['tests*']),
     scripts=[
         'qgis2to3/api2finder/qgis2apifinder',
-        'qgis2to3/qgis2to3/qgis2to3'
+        'qgis2to3/codeporting/qgis2to3'
         ],
     url='https://github.com/opengisch/qgis2to3',
     download_url='https://github.com/opengisch/qgis2to3/archive/[VERSION].tar.gz',
