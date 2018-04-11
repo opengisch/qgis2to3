@@ -4,7 +4,7 @@ python:
   - 3.6
 
 script:
-  - nosetests -v
+  - ./qgis2to3/api2finder/test/test.sh
 
 deploy:
   provider: script
