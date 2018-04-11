@@ -16,12 +16,12 @@ PyQt4 to PyQt5 porting as well as some other things.
 
 
 ## qgis2apifinder
-The api2finder package is a tool that helps you find usages of the QGIS api 
-version 2 and proposes changes for api version 3
+The api2finder package is a tool that helps you find usages of the QGIS API 
+version 2 and proposes changes to API version 3
 
 it is based on a machine parsing of https://qgis.org/api/api_break.html so 
 the result are as good as the information there.
-Also, being a simple parser, it just give an hint were to look at. It is by 
+Also, being a simple parser, it just gives a hint where to look at. It is by 
 no means a complete tool to find all the
 possible API incompatibility.
 
