@@ -11,8 +11,7 @@ there is a nice write-up on how to use this tools at http://www.opengis.ch/2018/
 # Description
 
 ## qgis2to3
-The codeporting package is a copy of the files found in https://github
-.com/qgis/QGIS/tree/master/scripts to allow for quick downloading and simple
+The codeporting package is a copy of the files found in https://github.com/qgis/QGIS/tree/master/scripts to allow for quick downloading and simple
  installation without the need of downloading the whole QGIS repository.
 This is a set of fixers for the python 2to3 command that will update your 
 Python 2 code to Python 3. The additional fixers will also take care of the 
