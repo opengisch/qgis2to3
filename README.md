@@ -37,6 +37,8 @@ for that keyword.
 ## install
 `pip install qgis2to3`
 
+Please note that often for system-wide installation you need sudo.
+
 ## Usage
 
 ### qgis2to3
