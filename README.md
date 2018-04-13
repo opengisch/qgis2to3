@@ -3,8 +3,12 @@
 
 This repository includes two tools to help you migrate your QGIS 2 plugins 
 to QGIS 3: `qgis2to3` and `qgis2apifinder`. Both tools are distributed as a 
-Python package installable via 
+Python package installable via pip.
 
+# Blog post 
+there is a nice write-up on how to use this tools at http://www.opengis.ch/2018/04/13/porting-qgis-plugins-to-api-v3-strategy-and-tools/
+
+# Description
 
 ## qgis2to3
 The codeporting package is a copy of the files found in https://github
