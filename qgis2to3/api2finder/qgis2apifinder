@@ -8,7 +8,9 @@ import re
 from qgis2to3.api2finder.matchesdict import matches
 
 # user configurable if wanted
-VERBOSE_KEYS = ['layout', 'layer', 'fields']
+VERBOSE_KEYS = ['layout', 'layer', 'fields', 'clear', 'draw', 'name',
+                'label', 'instance', 'actions', 'layers', 'dialog',
+                'reject', 'select', 'accept']
 
 # do not change
 TOTAL = 0
