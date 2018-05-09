@@ -29,6 +29,9 @@ matches = {
     "ParametericLine": [
         "==Removed=="
     ], 
+    "QGis": [
+        "==Renamed== to Qgis"
+    ], 
     "QgisGui": [
         "==Renamed to== QgsGuiUtils"
     ], 

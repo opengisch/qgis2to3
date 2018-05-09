@@ -3,6 +3,11 @@ import json
 
 newdict = {}
 
+# load manual addition dict
+with open('./manual_addition.json', 'r') as f:
+    manual_addition = json.load(f)
+
+
 print('merging duplicates')
 with open('matches.txt', 'r') as f:
     for l in f:
@@ -19,5 +24,9 @@ with open('matches.txt', 'r') as f:
         else:
             newdict[k] = [v]
 print('creating python dict file')
+
+newdict.update(manual_addition)
+
 with open('matchesdict.py', 'w') as f:
     f.write('matches = ' + json.dumps(newdict, indent=4, sort_keys=True))
+
