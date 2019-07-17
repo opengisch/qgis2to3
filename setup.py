@@ -29,6 +29,8 @@ setup(
         'Topic :: Software Development :: Bug Tracking',
         'Development Status :: 4 - Beta'
         ],
-    # install_requires=[],
+    install_requires=[
+        'future'
+        ],
     python_requires='~=3.3',
     )
